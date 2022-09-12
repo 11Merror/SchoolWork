@@ -1,0 +1,56 @@
+!!! Add stovpets of 0 after neparnii stovpets !!!
+
+var a:array[1..100,1..100] of integer;
+n,k,h:integer;
+
+procedure Form;
+var i,j:integer;
+Begin
+Randomize;
+For i:=1 to n do
+Begin
+For j:=1 to k do
+a[i,j]:=Random(99);
+end;
+end;
+
+procedure For1m;
+var i,j:integer;
+Begin
+For i:=1 to h+1 do
+Begin
+writeln;
+For j:=1 to k do
+write (a[i,j],' ');
+end;
+end;
+
+procedure Diverse( u:integer );
+var i,j:integer;
+Begin
+For j:=h+1 downto u+1 do
+Begin
+For i:=1 to k do
+a[j,i]:=a[j-1,i];
+end;
+For i:=1 to k do
+a[u+1,i]:=0;
+end;
+
+procedure Main;
+var i:integer;
+Begin
+i:=1;
+h:=n;
+While i<h do
+Begin
+If a[i,1] mod 2 = 0 then Begin Diverse(i); i:=i+2; h:=h+1; end
+else Inc(i);
+end;
+end;
+
+Begin
+readln(n,k);
+h:=n-1;
+Form; Writeln; For1m; Main; Writeln; For1m;
+end.
