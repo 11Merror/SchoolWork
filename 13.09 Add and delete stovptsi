@@ -54,3 +54,33 @@ readln(n,k);
 h:=n-1;
 Form; Writeln; For1m; Main; Writeln; For1m;
 end.
+
+!!! Vilychiti stovpchik if parnii !!!
+
+Var n,m:byte;
+а:ап ау [1 .100,1" 100] of integer; Pr ocedure Form;
+Var i,j:byte; begin
+Randomize;
+for i:=1to п do for j:=1to m do
+a[i,j ]:=Random(l 00); end;
+Pr oced ure Viv;
+Var i,j:byte; begin
+for i:=1 to п do begin
+wri teln;
+for j:=1 to m do Write(a[i,j]:З); end;
+end;
+Procedure ZL(k:byte);
+var i,j:by t e; begin
+for i:=1 to  п do for j:=k+1 to m do begin
+a[i,j-1]:=a[i,j J; end;
+m:=m-1;
+end; Procedure Vil;
+Var
+i,j:byte; begin j:=1;
+for i:=1to n do begin
+While j<=m do begin
+if a(l ,j] mod 2=0 then ZL(j) else j:=j+l;
+end; end; end; begin
+Writeln('n,m ');
+Readln(n,m); Form;
+Viv; Vil; Viv; end.
