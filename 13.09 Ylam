@@ -1,0 +1,129 @@
+!!! Ylam ( centre = 1 ) !!!
+
+var
+n:byte;
+x:array[1..100,1..100] of integer;
+procedure Spiral;
+var
+a,b,c,d,i,j:byte;
+k:integer;
+begin
+k:=n*n; a:=1;b:=n;c:=1;d:=n;
+While k>= 1 do
+begin
+for i:=c to d do
+begin
+x[a,i]:=k;dec(k);
+end;
+inc(a);
+for i:=a to b do
+begin
+x[i,d]:=k;dec(k);
+end;
+dec(d);
+for i:=d downto c do
+begin
+x[b,i]:=k;dec(k);
+end;
+dec(b);
+for i:=b downto a do
+begin
+x[i,c]:=k;dec(k);
+end;
+inc(c);
+end
+end;
+procedure Viv;
+var i,j:byte;
+begin
+for i:=1 to n do
+begin
+writeln;
+for j:=1 to n do write(x[i,j]:3)
+end;
+end;
+procedure Viv1;
+var i,j,a,b:byte;
+begin
+b:=0;
+for i:=1 to n do
+begin
+writeln;
+for j:=1 to n do 
+Begin
+if x[i][j]=1 then b:=1;
+for a:=2 to x[i][j]-1 do if x[i][j] mod a = 0 then Inc(b);
+if x[i][j]=2 then b:=0;
+if b=0 then write('! * !') else write('!   !');
+b:=0;
+end;
+end;
+end;
+begin
+writeln('n?');readln(n);Spiral;Viv;Writeln;Viv1;
+end.
+
+!!! Ylam ( centere = n*n ) !!!
+
+var
+n:byte;
+x:array[1..100,1..100] of integer;
+procedure Spiral;
+var
+a,b,c,d,i,j:byte;
+k,abc:integer;
+begin
+abc:=n*n; a:=1;b:=n;c:=1;d:=n; k:=1;
+While k <= abc do
+begin
+for i:=c to d do
+begin
+x[a,i]:=k; inc(k);
+end;
+inc(a);
+for i:=a to b do
+begin
+x[i,d]:=k; inc(k);
+end;
+dec(d);
+for i:=d downto c do
+begin
+x[b,i]:=k; inc(k);
+end;
+dec(b);
+for i:=b downto a do
+begin
+x[i,c]:=k; inc(k);
+end;
+inc(c);
+end;
+end;
+procedure Viv;
+var i,j:byte;
+begin
+for i:=1 to n do
+begin
+writeln;
+for j:=1 to n do write(x[i,j]:3)
+end;
+end;
+procedure Viv1;
+var i,j,a,b:byte;
+begin
+b:=0;
+for i:=1 to n do
+begin
+writeln;
+for j:=1 to n do 
+Begin
+if x[i][j]=1 then b:=1;
+for a:=2 to x[i][j]-1 do if x[i][j] mod a = 0 then Inc(b);
+if x[i][j]=2 then b:=0;
+if b=0 then write('! * !') else write('!   !');
+b:=0;
+end;
+end;
+end;
+begin
+writeln('n?');readln(n);Spiral;Viv;Writeln;Viv1;
+end.
